@@ -24,6 +24,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install bump2version build wheel
 
+      - name: Configure git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
       - name: Get latest tag
         id: get_tag
         run: |
@@ -51,7 +56,7 @@ jobs:
 
       - name: Push new version and tag
         run: |
-          git push origin main --tags
+          git push origin HEAD:main --tags
 
       - name: Build package
         run: python -m build
@@ -64,3 +69,4 @@ jobs:
             dist/*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
