@@ -39,7 +39,7 @@ jobs:
           latest_tag=$(git describe --tags --abbrev=0 || echo "v0.0.0")
           echo "latest_tag=$latest_tag" >> $GITHUB_ENV
 
-      - name: Determine bump type   # ✅ fixed indentation
+      - name: Determine bump type
         id: bump_type
         run: |
           if [[ "${{ github.event.head_commit.message }}" == *"bump: major"* ]]; then
@@ -49,7 +49,7 @@ jobs:
           elif [[ "${{ github.event.head_commit.message }}" == *"bump: patch"* ]]; then
             echo "bump_type=patch" >> $GITHUB_ENV
           else
-            echo "❌ ERROR: Commit must include 'bump: patch|minor|major'"
+            echo "ERROR: Commit must include 'bump: patch|minor|major'"
             exit 1
           fi
 
