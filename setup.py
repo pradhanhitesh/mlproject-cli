@@ -17,6 +17,6 @@ setup(
     },
     author="Your Name",
     description="ML project scaffolding CLI",
-    url="https://github.com/yourusername/mlproject",
+    url="https://github.com/pradhanhitesh/mlproject",
     python_requires=">=3.8",
 )
