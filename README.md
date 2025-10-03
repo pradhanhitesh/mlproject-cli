@@ -15,3 +15,4 @@
   - `utils/`
 - Provides `clear` command to safely remove all project folders
 - Works with both pip/venv and conda environments
+# mlproject-cli
