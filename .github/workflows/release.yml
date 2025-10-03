@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main   # only trigger on main branch
-
+permissions:
+  contents: write
+  
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -36,16 +38,20 @@ jobs:
           latest_tag=$(git describe --tags --abbrev=0 || echo "v0.0.0")
           echo "latest_tag=$latest_tag" >> $GITHUB_ENV
 
-      - name: Determine bump type
+            - name: Determine bump type
         id: bump_type
         run: |
           if [[ "${{ github.event.head_commit.message }}" == *"bump: major"* ]]; then
             echo "bump_type=major" >> $GITHUB_ENV
           elif [[ "${{ github.event.head_commit.message }}" == *"bump: minor"* ]]; then
             echo "bump_type=minor" >> $GITHUB_ENV
-          else
+          elif [[ "${{ github.event.head_commit.message }}" == *"bump: patch"* ]]; then
             echo "bump_type=patch" >> $GITHUB_ENV
+          else
+            echo "❌ ERROR: Commit must include 'bump: patch|minor|major'"
+            exit 1
           fi
+
 
       - name: Bump version
         run: |
@@ -69,4 +75,3 @@ jobs:
             dist/*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
