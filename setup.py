@@ -7,10 +7,6 @@ setup(
     include_package_data=True,
     install_requires=[
     "click",
-    "numpy",
-    "pandas",
-    "scikit-learn",
-    "huggingface_hub",
     "kagglehub"
 ],
     entry_points={
@@ -19,7 +15,9 @@ setup(
         ],
     },
     author="Hitesh Pradhan",
-    description="ML project scaffolding CLI",
+    author_email="htshpradhan5@gmail.com",
+    license="MIT License",
+    description="MLProject CLI: Build quick and modular ML project scaffolding",
     url="https://github.com/pradhanhitesh/mlproject",
     python_requires=">=3.8",
 )

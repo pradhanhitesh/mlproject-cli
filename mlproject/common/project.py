@@ -12,5 +12,5 @@ PROJECT_STRUCTURE = {
         "utils/",
         "logs/"
     ],
-    "tests": [],
+    "notebooks": [],
 }
