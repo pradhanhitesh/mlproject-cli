@@ -4,10 +4,10 @@ import click
 
 # New folder structure
 PROJECT_STRUCTURE = {
-    "config": ["config.yml"],   # will include a config.yml
+    "config": ["config.yml"],
     "experiments": [],
     "src": [
-        "__init__.py",          # makes src a package
+        "__init__.py",
         "models/",
         "data/",
         "inference/",
@@ -49,7 +49,7 @@ def init(project_name):
                         else:
                             f.write("")
                     click.echo(f"Created {item_path}")
-        click.echo(f"✅ Initialized {folder}/")
+        click.echo(f"Initialized {folder}/")
 
     click.echo(f"\n🎉 Project '{project_name}' structure created at {root}")
 
@@ -61,7 +61,7 @@ def clear(project_name):
     root = os.path.abspath(project_name)
 
     click.confirm(
-        f"⚠️  This will DELETE all project folders under {root}. Continue?",
+        f"This will DELETE all project folders under {root}. Continue?",
         abort=True
     )
 
@@ -69,8 +69,8 @@ def clear(project_name):
         folder_path = os.path.join(root, folder)
         if os.path.exists(folder_path):
             shutil.rmtree(folder_path)
-            click.echo(f"🗑️  Deleted {folder_path}")
+            click.echo(f"Deleted {folder_path}")
         else:
             click.echo(f"Skipped {folder_path} (not found)")
 
-    click.echo(f"\n✅ Project '{project_name}' cleared.")
+    click.echo(f"\nProject '{project_name}' cleared.")
