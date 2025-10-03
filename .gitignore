@@ -1,0 +1,62 @@
+# ==============================
+# Python cache / compiled files
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==============================
+# Distribution / packaging
+# ==============================
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ==============================
+# Virtual environments
+# ==============================
+venv/
+.venv/
+ENV/
+env/
+env.bak/
+python_env/
+
+# ==============================
+# Jupyter / notebooks
+# ==============================
+.ipynb_checkpoints/
+*.ipynb~
+
+# ==============================
+# Testing / coverage
+# ==============================
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+coverage.xml
+*.cover
+*.py,cover
+
+# ==============================
+# IDE / Editors
+# ==============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==============================
+# OS files
+# ==============================
+.DS_Store
+Thumbs.db

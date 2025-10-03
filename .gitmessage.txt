@@ -1,0 +1,17 @@
+# <type>: <short summary>
+# Types: feat | fix | docs | style | refactor | test | chore
+#
+# Example: feat: add clinician consensus workflow
+
+# --- COMMIT MESSAGE TEMPLATE ---
+
+<type>: <short summary>
+
+# Detailed explanation (if necessary)
+# - Why is this change necessary?
+# - What problem does it solve?
+# - Any side effects or dependencies?
+
+# Optional footer (issues, breaking changes)
+# Closes #123
+# BREAKING CHANGE: description of change
