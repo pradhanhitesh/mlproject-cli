@@ -2,7 +2,7 @@ import os
 import shutil
 import click
 
-from .common.logic import create, delete, download
+from .logic import create, delete, download
 
 @click.group()
 def cli():
