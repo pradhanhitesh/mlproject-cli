@@ -64,6 +64,12 @@ jobs:
         run: |
           git push origin HEAD --tags
 
+      - name: Get new version tag
+        id: new_tag
+        run: |
+          new_tag=$(git describe --tags `git rev-list --tags --max-count=1`)
+          echo "new_tag=$new_tag" >> $GITHUB_ENV
+
       - name: Build package
         run: python -m build
 
