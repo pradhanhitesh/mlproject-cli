@@ -62,7 +62,7 @@ jobs:
 
       - name: Push new version and tag
         run: |
-          git push origin HEAD:main --tags
+          git push origin HEAD --tags
 
       - name: Build package
         run: python -m build
