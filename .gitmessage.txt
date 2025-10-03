@@ -5,7 +5,7 @@
 
 # --- COMMIT MESSAGE TEMPLATE ---
 
-<type>: <short summary>
+<type>: <short summary> <bump>
 
 # Detailed explanation (if necessary)
 # - Why is this change necessary?
