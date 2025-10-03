@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main   # only trigger on main branch
+
 permissions:
   contents: write
   
@@ -38,7 +39,7 @@ jobs:
           latest_tag=$(git describe --tags --abbrev=0 || echo "v0.0.0")
           echo "latest_tag=$latest_tag" >> $GITHUB_ENV
 
-            - name: Determine bump type
+      - name: Determine bump type   # ✅ fixed indentation
         id: bump_type
         run: |
           if [[ "${{ github.event.head_commit.message }}" == *"bump: major"* ]]; then
@@ -51,7 +52,6 @@ jobs:
             echo "❌ ERROR: Commit must include 'bump: patch|minor|major'"
             exit 1
           fi
-
 
       - name: Bump version
         run: |
@@ -70,6 +70,8 @@ jobs:
       - name: Upload release assets
         uses: softprops/action-gh-release@v1
         with:
+          name: "MLProject CLI ${{ github.ref_name }}"
+          tag_name: ${{ github.ref_name }}
           files: |
             dist/*.whl
             dist/*.tar.gz
