@@ -70,10 +70,17 @@ jobs:
       - name: Upload release assets
         uses: softprops/action-gh-release@v1
         with:
-          name: "MLProject CLI ${{ github.ref_name }}"
           tag_name: ${{ github.ref_name }}
+          name: "MLProject CLI ${{ github.ref_name }}" 
+          body: |
+            Release ${{ github.ref_name }}
+
+            Changes in this release:
+            - Auto-bumped version via GitHub Actions
+            - See commit history for details
           files: |
             dist/*.whl
             dist/*.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
