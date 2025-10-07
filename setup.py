@@ -8,6 +8,7 @@ setup(
     install_requires=[
     "click",
     "kagglehub"
+    "jupyter"
 ],
     entry_points={
         "console_scripts": [
