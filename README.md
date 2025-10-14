@@ -2,6 +2,8 @@
 
 `mlproject` is a lightweight Python package + CLI tool for bootstrapping Machine Learning (ML) project structures. It helps you quickly scaffold standard folders like `config/`, `src/`, `experiments/`, and `notebooks/` so you can focus on your code instead of boilerplate setup.
 
+You can view this projects built using `mlproject-cli`: [Diabetic Retinopathy - Predicting risk of macular edema using OCT images](https://github.com/pradhanhitesh/diabetic-retinopathy-kaggle)
+
 ## Features
 
 * Scaffold a clean ML project structure with one command
@@ -18,24 +20,24 @@ When you run `mlproject init your-project-name`, it creates the following struct
 your-project-name/
 │
 ├── config/
-│   └── config.yml        # Central configuration for experiments
+│   └── config.yml        
 │
-├── experiments/          # Logs, results, or metadata for each experiment
+├── experiments/          
 │
-├── notebooks/            # Jupyter notebooks for exploration, prototyping, EDA
+├── notebooks/            
 │
-├── src/                  # Main Python package
+├── src/                  
 │   ├── __init__.py
-│   ├── models/           # ML/DL models and architectures
-│   ├── data/             # Data loading, preprocessing pipelines, dataset classes
-│   ├── inference/        # Prediction scripts, model serving utilities
-│   ├── preproc/          # Data cleaning, feature engineering, transforms
-│   ├── train/            # Training scripts, loops, optimizers, callbacks
-│   ├── test/             # Unit tests, validation scripts, evaluation metrics
-│   ├── utils/            # Helper functions, common utilities
-│   └── logs/             # Logs generated during training/inference
+│   ├── models/          
+│   ├── data/             
+│   ├── inference/        
+│   ├── preproc/         
+│   ├── train/            
+│   ├── test/             
+│   ├── utils/            
+│   └── logs/             
 │
-└── README.md             # Project description
+└── README.md             
 ```
 
 ## Folder Description
