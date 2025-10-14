@@ -41,18 +41,26 @@ def create(project_name, framework, install):
 
     os_type = platform.system().lower()
     special_command = None
+    extra_index_url = None
 
     if framework:
         if framework in FRAMEWORK_REQUIREMENTS:
             framework_pkgs = FRAMEWORK_REQUIREMENTS[framework].get(os_type)
-            if framework == "torch" and os_type == "darwin":
-                # Special case: torch on macOS
-                special_command = (
-                    "pip3 install --pre torch torchvision torchaudio "
-                    "--extra-index-url https://download.pytorch.org/whl/nightly/cpu"
-                )
-                click.echo("PyTorch on macOS requires a special install command. "
-                           "It will not be written to requirements.txt.")
+            if framework == "torch":
+                if os_type == "darwin":
+                    # Special case: torch on macOS (CPU only)
+                    special_command = (
+                        "pip3 install --pre torch torchvision torchaudio "
+                        "--extra-index-url https://download.pytorch.org/whl/nightly/cpu"
+                    )
+                    click.echo("PyTorch on macOS requires a special install command. "
+                               "It will not be written to requirements.txt.")
+                elif os_type == "windows":
+                    extra_index_url = "--extra-index-url https://download.pytorch.org/whl/cu121"
+                    framework_pkgs = [pkg for pkg in framework_pkgs if not pkg.startswith("--index-url")]
+                    base_requirements.extend(framework_pkgs)
+                else:
+                    base_requirements.extend(framework_pkgs)
             elif framework_pkgs:
                 base_requirements.extend(framework_pkgs)
             else:
@@ -60,20 +68,27 @@ def create(project_name, framework, install):
         else:
             click.echo(f"Unknown framework: {framework}")
 
+    # Write requirements.txt
     with open(req_path, "w") as f:
         f.write("\n".join(base_requirements) + "\n")
+        if extra_index_url:
+            f.write(f"{extra_index_url}\n")
 
     click.echo(f"requirements.txt created with {framework or 'base'} dependencies")
 
     # Auto-install if requested
     if install:
         click.echo("Installing dependencies...")
-        subprocess.check_call(["pip", "install", "-r", req_path])
+        try:
+            subprocess.check_call(["pip", "install", "-r", req_path])
+        except subprocess.CalledProcessError:
+            click.echo("Some dependencies failed to install. Please check your pip or Python version.")
         if special_command:
             click.echo(f"Running special install for PyTorch on macOS:\n   {special_command}")
             subprocess.check_call(special_command, shell=True)
 
     click.echo(f"\nProject '{project_name}' structure created at {root}")
+
 
 def delete(project_name):
     """Clear all project folders"""
