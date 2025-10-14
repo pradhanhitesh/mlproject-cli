@@ -75,7 +75,7 @@ You can install `mlproject` directly from source or package index.
 ### From Release (latest development version)
 
 ```bash
-pip install https://github.com/pradhanhitesh/mlproject-cli/releases/download/v0.3.1/mlproject-0.3.1-py3-none-any.whl
+pip install https://github.com/pradhanhitesh/mlproject-cli/releases/download/v0.4.4/mlproject-0.4.4-py3-none-any.whl
 ```
 
 ### From Source (latest development version)
