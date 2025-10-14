@@ -1,6 +1,6 @@
 """MLProject package initialization."""
 
-__version__ = "0.4.2"
+__version__ = "0.4.3"
 
 # Optional: re-export CLI so people can run programmatically
 from .cli import cli
